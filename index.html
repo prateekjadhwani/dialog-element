@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        body {
+            background-color: antiquewhite;
+            font-size: 24px;
+        }
+        .buy-now-button {
+            width: 200px;
+            background-color: red;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            border: none;
+            
+        }
+        .buy-now-button:hover {
+            cursor: pointer;
+            background-color: #ff00009c;
+        }
+
+        #my-dialog::backdrop {
+            opacity: 0.3;
+            background-color: green;
+        }
+
+        #my-dialog:modal {
+            border-radius: 10px;
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div>Product Name: Some Shoes</div>
+        <button class="buy-now-button">
+            Buy Now
+        </button>
+    </div>
+
+    <dialog id="my-dialog">
+        <p>Can you please confirm</p>
+        <button>Yep, I can confirm</button>
+        <button class="close-button">X</button>
+    </dialog>
+
+    <script type="text/javascript">
+        let buttonDOM = document.querySelector('.buy-now-button');
+        buttonDOM.addEventListener('click', () => {
+            let dialogDOM = document.querySelector('#my-dialog');
+            dialogDOM.showModal();
+        });
+
+        let dialogDOM = document.querySelector('#my-dialog');
+        dialogDOM.addEventListener('close', () => {
+            // DO whatever you want
+            console.log('dialog closed');
+        });
+
+        let closeButtonDOM = document.querySelector('.close-button');
+        closeButtonDOM.addEventListener('click', () => {
+            let dialogDOM = document.querySelector('#my-dialog');
+            dialogDOM.close();
+        });
+    </script>
+</body>
+</html>
